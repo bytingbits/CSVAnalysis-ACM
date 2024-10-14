@@ -43,7 +43,7 @@ def display_statistics(df, column):
         st.metric("Mode", mode(df[column]))
 
 def main():
-    st.title("CSV Data Visualizer")
+    st.title("ACMs report dashboard :)")
 
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
