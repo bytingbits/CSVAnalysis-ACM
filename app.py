@@ -1,58 +1,71 @@
-%%writefile app.py
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import plotly.graph_objects as go
+from statistics import mode, mean, median
 
-# Function to plot the unsorted stacked bar graph
-def plot_unsorted_stacked_bar(df, column_a, column_b):
-    # Create a pivot table to count the occurrences for stacking
-    pivot_df = df.pivot_table(index=column_a, columns=column_b, aggfunc='size', fill_value=0)
+def load_data(file):
+    return pd.read_csv(file)
 
-    # Plot the unsorted stacked bar plot
-    pivot_df.plot(kind='bar', stacked=True, figsize=(10, 6))
-    plt.title(f"Unsorted Stacked Bar Chart of {column_a} by {column_b}")
-    plt.ylabel("Frequency")
-    plt.xlabel(column_a)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(plt.gcf())  # Streamlit method to show the plot
+def create_stacked_bar_plot(df, x_column, y_column):
+    # Group the data by the two selected columns, counting occurrences
+    grouped_data = df.groupby([x_column, y_column]).size().unstack(fill_value=0)
+    
+    # Create the stacked bar plot
+    fig = go.Figure()
+    
+    for category in grouped_data.columns:
+        fig.add_trace(go.Bar(
+            x=grouped_data.index,
+            y=grouped_data[category],
+            name=str(category)
+        ))
+    
+    fig.update_layout(
+        barmode='stack',
+        title=f'Distribution of {y_column} by {x_column}',
+        xaxis_title=x_column,
+        yaxis_title='Count',
+        legend_title=y_column
+    )
+    
+    return fig
 
-# Function to plot the sorted stacked bar graph
-def plot_sorted_stacked_bar(df, column_a, column_b):
-    # Create a pivot table to count the occurrences for stacking
-    pivot_df = df.pivot_table(index=column_a, columns=column_b, aggfunc='size', fill_value=0)
+def create_pivot_table(df, x_column, y_column):
+    return pd.pivot_table(df, values=df.index, index=x_column, columns=y_column, aggfunc='count', fill_value=0)
 
-    # Sort the pivot table based on total frequency (sum across rows)
-    pivot_df = pivot_df.loc[pivot_df.sum(axis=1).sort_values(ascending=False).index]
+def display_statistics(df, column):
+    if pd.api.types.is_numeric_dtype(df[column]):
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Mean", f"{mean(df[column]):.2f}")
+        col2.metric("Median", f"{median(df[column]):.2f}")
+        col3.metric("Mode", f"{mode(df[column]):.2f}")
+    else:
+        st.metric("Mode", mode(df[column]))
 
-    # Plot the sorted stacked bar plot
-    pivot_df.plot(kind='bar', stacked=True, figsize=(10, 6))
-    plt.title(f"Sorted Stacked Bar Chart of {column_a} by {column_b}")
-    plt.ylabel("Frequency")
-    plt.xlabel(column_a)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(plt.gcf())  # Streamlit method to show the plot
+def main():
+    st.title("CSV Data Visualizer")
 
-# Streamlit app layout
-st.title("Stacked Bar Plot from CSV")
+    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+    if uploaded_file is not None:
+        df = load_data(uploaded_file)
+        
+        columns = df.columns.tolist()
+        x_column = st.selectbox("Select column for X-axis", columns)
+        y_column = st.selectbox("Select column for Y-axis (stacked)", columns)
 
-# Step 1: Upload CSV
-uploaded_file = st.file_uploader("Upload CSV", type="csv")
+        if x_column and y_column:
+            fig = create_stacked_bar_plot(df, x_column, y_column)
+            st.plotly_chart(fig)
 
-if uploaded_file is not None:
-    # Step 2: Load CSV data
-    df = pd.read_csv(uploaded_file)
-    st.write("Data Preview:", df.head())
+            st.subheader("Pivot Table")
+            pivot_table = create_pivot_table(df, x_column, y_column)
+            st.dataframe(pivot_table)
 
-    # Step 3: Dropdown for column selection
-    columns = df.columns.tolist()
-    column_a = st.selectbox("Select the column for X-axis (Column A):", columns)
-    column_b = st.selectbox("Select the column for stacking (Column B):", columns)
+            st.subheader(f"Statistics for {x_column}")
+            display_statistics(df, x_column)
 
-    if st.button("Generate Plot"):
-        st.subheader("Unsorted Stacked Bar Plot")
-        plot_unsorted_stacked_bar(df, column_a, column_b)
+            st.subheader(f"Statistics for {y_column}")
+            display_statistics(df, y_column)
 
-        st.subheader("Sorted Stacked Bar Plot")
-        plot_sorted_stacked_bar(df, column_a, column_b)
-
+if __name__ == "__main__":
+    main()
