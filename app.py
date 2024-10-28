@@ -8,10 +8,6 @@ light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
 st.markdown("<div style='height: 10pc;'></div>", unsafe_allow_html=True)  # Adjust height as needed
 
-# Made with ❤️ section
-"""st.markdown("---")  # Optional: Adds a horizontal line for separation
-st.write("Made with ❤️ by Sharada for ACM-CEG!")
-st.write("Thanks to everyone who contributed!")"""
 st.markdown("""
 <style>
 .footer {
