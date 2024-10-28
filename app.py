@@ -14,10 +14,17 @@ mode = st.radio("Choose mode:", options=["☀️ Light", "🌙 Dark"])
 if mode == "☀️ Light":
     # Display light mode logo
     st.image(light_mode_logo, caption="Light Mode Logo")
-    st.markdown('<style>body {background-color: #ffffff;}</style>', unsafe_allow_html=True)
+    st.session_state.theme = "light"
 else:
     # Display dark mode logo
     st.image(dark_mode_logo, caption="Dark Mode Logo")
-    st.markdown('<style>body {background-color: #000000; color: #ffffff;}</style>', unsafe_allow_html=True)
+    st.session_state.theme = "dark"
+
+# Apply the theme
+if 'theme' in st.session_state:
+    if st.session_state.theme == "dark":
+        st.markdown('<style>body {background-color: #000000; color: #ffffff;}</style>', unsafe_allow_html=True)
+    else:
+        st.markdown('<style>body {background-color: #ffffff; color: #000000;}</style>', unsafe_allow_html=True)
 
 st.write("Toggle between light and dark mode to see different logos.")
