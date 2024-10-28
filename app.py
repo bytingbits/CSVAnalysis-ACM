@@ -6,7 +6,7 @@ st.write("Hey! This tool helps you quickly pull insights from our feedback forms
 
 # Define paths to your images
 dark_mode_logo = "black_mode.png"  # Replace with your dark mode logo path
-light_mode_logo = "white_mode.png"  # Replace with your light mode logo path
+light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 
 # Use the `st.beta_set_page_config` to set the theme
 #st.set_page_config(page_title="Logo Display", page_icon=light_mode_logo)
