@@ -6,4 +6,4 @@ statistics
 matplotlib
 seaborn
 nltk
-sklearn
+scikit-learn
