@@ -9,6 +9,25 @@ st.logo(light_mode_logo)
 st.markdown("<div style='height: 10pc;'></div>", unsafe_allow_html=True)  # Adjust height as needed
 
 # Made with ❤️ section
-st.markdown("---")  # Optional: Adds a horizontal line for separation
+"""st.markdown("---")  # Optional: Adds a horizontal line for separation
 st.write("Made with ❤️ by Sharada for ACM-CEG!")
-st.write("Thanks to everyone who contributed!")
+st.write("Thanks to everyone who contributed!")"""
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    z-index: 1000;
+}
+</style>
+<div class="footer">
+    Made with ❤️ by <a href="https://github.com/your-github-username" target="_blank">Your Name</a>
+</div>
+""", unsafe_allow_html=True)
