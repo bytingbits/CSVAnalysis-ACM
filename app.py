@@ -2,12 +2,13 @@ import streamlit as st
 
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 # Create columns for the header
-col1, col2, col3, col4 = st.columns([1, 5])  # Adjust the ratios as needed
+col1, col2 = st.columns([1, 5])  # Adjust the ratios as needed
 
 with col1:
     st.image(light_mode_logo, use_column_width=True)  # Display header image
 # Set the title of the app
-st.title("Welcome to ACM-CEG's Report Analyser!")
+with col2:
+    st.title("Welcome to ACM-CEG's Report Analyser!")
 st.write("Hey! This tool helps you quickly pull insights from our feedback forms so that members of the HR domain can make expressive reports fast + events domain can get action points to be implemented in further events")
 
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
