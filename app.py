@@ -9,7 +9,7 @@ dark_mode_logo = "black_mode_logo.png"  # Replace with your dark mode logo path
 light_mode_logo = "white_mode_logo.png"  # Replace with your light mode logo path
 
 # Use the `st.beta_set_page_config` to set the theme
-st.set_page_config(page_title="Logo Display", page_icon=light_mode_logo)
+#st.set_page_config(page_title="Logo Display", page_icon=light_mode_logo)
 
 # Create a toggle to switch between light and dark modes
 mode = st.selectbox("Choose mode:", ["Light", "Dark"])
