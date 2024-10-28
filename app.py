@@ -24,6 +24,6 @@ st.markdown("""
 }
 </style>
 <div class="footer">
-    Made with ❤️ by <a href="https://github.com/your-github-username" target="_blank">Your Name</a>
+    Made with ❤️ by <a href="https://github.com/byting-bits" target="_blank">Baby</a>
 </div>
 """, unsafe_allow_html=True)
