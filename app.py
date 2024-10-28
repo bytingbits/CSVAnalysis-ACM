@@ -5,8 +5,8 @@ st.title("Welcome to ACM-CEG's Report Analyser!")
 st.write("Hey! This tool helps you quickly pull insights from our feedback forms so that members of the HR domain can make expressive reports fast + events domain can get action points to be implemented in further events")
 
 # Define paths to your images
-dark_mode_logo = "black_mode_logo.png"  # Replace with your dark mode logo path
-light_mode_logo = "white_mode_logo.png"  # Replace with your light mode logo path
+dark_mode_logo = "black_mode.png"  # Replace with your dark mode logo path
+light_mode_logo = "white_mode.png"  # Replace with your light mode logo path
 
 # Use the `st.beta_set_page_config` to set the theme
 #st.set_page_config(page_title="Logo Display", page_icon=light_mode_logo)
