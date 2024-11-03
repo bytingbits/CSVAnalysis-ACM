@@ -22,9 +22,7 @@ light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
 st.markdown("""
 <style>
-#GithubIcon {
-  visibility: hidden;
-}
+
 .footer {
     position: fixed;
     left: 0;
@@ -38,6 +36,9 @@ st.markdown("""
     z-index: 1000;
 }
 </style>
+#GithubIcon {
+  visibility: hidden;
+}
 <div class="footer">
     Made with ❤️ by <a href="https://github.com/bytingbits" target="_blank">sharada</a>
 </div>
