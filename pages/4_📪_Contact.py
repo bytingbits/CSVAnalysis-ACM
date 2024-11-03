@@ -9,7 +9,8 @@ st.write("If you have better name ideas, questions or feature suggestions, mail 
 st.markdown("<a href='mailto:csm.sharada@gmail.com'>csm.sharada@gmail.com</a>", unsafe_allow_html=True)
 st.write(" with the subject 'ACM Reports Site'")
 
-
+st.markdown("""
+<style>
 .footer {
     position: fixed;
     left: 0;
