@@ -35,4 +35,4 @@ if uploaded_file:
 
         # Display pie chart
         st.subheader("Pie Chart of Item Percentages")
-        st.pyplot(percentage_counts.plot.pie(y='Percentage', labels=percentage_counts[selected_column], autopct='%1.1f%%', startangle=90, legend=None).figure)
+        st.pyplot(percentage_counts.plot.pie(labels=percentage_counts[selected_column], autopct='%1.1f%%', startangle=90, legend=None).figure)
