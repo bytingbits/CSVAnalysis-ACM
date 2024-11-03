@@ -14,7 +14,9 @@ with col1:
 # Set the title of the app
 with col2:
     st.title("Welcome to ACM-CEG's Report Analyser!")
-st.write("Hey! This tool helps you quickly pull insights from our feedback forms so that members of the HR domain can make expressive reports fast + events domain can get action points to be implemented in further events")
+st.write("Hey! 👋 This site is to help you make sense of our (often overwhelmingly large) Google Forms for reports and otherwise!") 
+st.write("📊 You'll need a CSV file to use this site!") 
+st.write("🧑‍💻 Once you've done that, navigate through the sidebar to create charts and tables with it! Have fun 🎉")
 
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
