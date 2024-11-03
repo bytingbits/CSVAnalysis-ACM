@@ -1,42 +1,39 @@
-gitimport streamlit as st
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import streamlit as st
 
-# Function to plot stacked sorted bar graph and show the pivot table
-def plot_stacked_bar(df, column_a, column_b):
-    # Create a pivot table to count occurrences for stacking
-    pivot_df = df.pivot_table(index=column_a, columns=column_b, aggfunc='size', fill_value=0)
 
-    # Sort the pivot table based on total frequency (sum across rows)
-    pivot_df = pivot_df.loc[pivot_df.sum(axis=1).sort_values(ascending=False).index]
+light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
+# Create columns for the header
+col1, col2 = st.columns([1, 5])  # Adjust the ratios as needed
 
-    # Display the pivot table in Streamlit
-    st.write("Frequency Table:", pivot_df)
+with col1:
+    st.image(light_mode_logo, use_column_width=True)  # Display header image
+# Set the title of the app
+with col2:
+    st.title("Welcome to ACM-CEG's Report Analyser!")
+st.write("Hey! This tool helps you quickly pull insights from our feedback forms so that members of the HR domain can make expressive reports fast + events domain can get action points to be implemented in further events")
 
-    # Plot the stacked bar chart
-    pivot_df.plot(kind='bar', stacked=True, figsize=(10, 6))
-    plt.title(f"Stacked Bar Chart of {column_a} by {column_b}")
-    plt.ylabel("Frequency")
-    plt.xlabel(column_a)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(plt.gcf())  # Display plot in Streamlit
-
-# Streamlit app layout
-st.title("Stacked Bar Plot from CSV")
-
-# Step 1: Upload CSV
-uploaded_file = st.file_uploader("Upload CSV", type="csv")
-
-if uploaded_file is not None:
-    # Step 2: Load CSV data
-    df = pd.read_csv(uploaded_file)
-    st.write("Data Preview:", df.head())
-
-    # Step 3: Dropdown for column selection
-    columns = df.columns.tolist()
-    column_a = st.selectbox("Select the column for X-axis (Column A):", columns)
-    column_b = st.selectbox("Select the column for stacking (Column B):", columns)
-
-    if st.button("Generate Plot"):
-        plot_stacked_bar(df, column_a, column_b)
+light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
+st.logo(light_mode_logo)
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    z-index: 1000;
+}
+</style>
+<div class="footer">
+    Made with ❤️ by <a href="https://github.com/bytingbits" target="_blank">sharada</a>
+</div>
+""", unsafe_allow_html=True)

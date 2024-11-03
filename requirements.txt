@@ -5,3 +5,5 @@ plotly
 statistics
 matplotlib
 seaborn
+nltk
+scikit-learn
