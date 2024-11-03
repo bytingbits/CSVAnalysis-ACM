@@ -22,6 +22,9 @@ light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
 st.markdown("""
 <style>
+#GithubIcon {
+  visibility: hidden;
+}
 .footer {
     position: fixed;
     left: 0;
