@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk import ngrams
 from nltk.sentiment import SentimentIntensityAnalyzer
+from collections import Counter
 import nltk
 
 # Download necessary NLTK resources
@@ -20,21 +21,13 @@ def ngram_analysis(text_series, n=2):
     ngrams_list = vectorizer.get_feature_names_out()
     return pd.DataFrame({'N-gram': ngrams_list, 'Count': ngrams_counts}).sort_values(by='Count', ascending=False)
 
-# Topic clustering (basic)
-def topic_clustering(text_series, num_topics=5):
-    vectorizer = CountVectorizer(stop_words='english')
-    X = vectorizer.fit_transform(text_series)
-    topics = X.sum(axis=0).A1
-    topics_df = pd.DataFrame({'Topic': vectorizer.get_feature_names_out(), 'Count': topics})
-    return topics_df.sort_values(by='Count', ascending=False).head(num_topics)
-
 # Sentiment analysis
 def sentiment_analysis(text_series):
     sia = SentimentIntensityAnalyzer()
     sentiments = text_series.apply(lambda x: sia.polarity_scores(x))
     sentiments_df = pd.DataFrame(sentiments.tolist())
-    sentiment_counts = sentiments_df['compound'].apply(lambda x: 'Positive' if x > 0.05 else ('Negative' if x < -0.05 else 'Neutral'))
-    return sentiment_counts
+    sentiment_labels = sentiments_df['compound'].apply(lambda x: 'Positive' if x > 0.05 else ('Negative' if x < -0.05 else 'Neutral'))
+    return pd.DataFrame({'Text': text_series, 'Sentiment': sentiment_labels})
 
 # Streamlit app layout
 st.title("Text Analysis")
@@ -63,17 +56,5 @@ if uploaded_file:
 
         # Sentiment analysis
         st.subheader("Sentiment Analysis")
-        sentiment_labels = sentiment_analysis(text_data)
-        
-        # Create a DataFrame with original text and sentiment labels
-        sentiment_df = pd.DataFrame({'Text': text_data, 'Sentiment': sentiment_labels})
-        
-        st.write("Sentiment Analysis Results:")
-        st.dataframe(sentiment_df)
-        
-        # Display sentiment counts
-        sentiment_counts = sentiment_labels.value_counts()
-        st.bar_chart(sentiment_counts)
-
-        st.write("Sentiment Counts:")
-        st.table(sentiment_counts)
+        sentiment_results = sentiment_analysis(text_data)
+        st.dataframe(sentiment_results)
