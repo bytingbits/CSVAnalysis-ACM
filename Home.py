@@ -38,6 +38,6 @@ st.markdown("""
 </style>
 
 <div class="footer">
-    Made with ❤️ by <a href="https://github.com/bytingbits" target="_blank">sharada</a>
+    Made with 🍩 and 🍿
 </div>
 """, unsafe_allow_html=True)
