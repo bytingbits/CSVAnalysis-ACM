@@ -23,7 +23,7 @@ def aggregate_small_percentages(df, threshold):
     return df
 
 # Streamlit app layout
-st.title("CSV Item Percentage Analysis")
+st.title("Pie Chart")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
