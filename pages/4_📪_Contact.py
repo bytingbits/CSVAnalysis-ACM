@@ -8,6 +8,7 @@ st.title("Don't be a stranger, get in touch!")
 
 st.markdown("If you have better name ideas, questions or feature suggestions, mail me at <a href='mailto:csm.sharada@gmail.com'>csm.sharada@gmail.com</a> with the subject as 'ACM Reports Site'", unsafe_allow_html=True)
 
+st.markdown("Don't like mails or prefer being anonymous? Fill this form instead! 🕵️", unsafe_allow_html=True)
 
 st.markdown("""
 <style>

@@ -61,18 +61,18 @@ if uploaded_file:
         n = st.slider("Select N for N-grams:", 1, 5, 2)
         ngram_results = ngram_analysis(text_data, n)
         st.dataframe(ngram_results)
+	if False: #commenting out code in progress
+            # Topic clustering
+            st.subheader("Topic Clustering")
+            topic_results = topic_clustering(text_data)
+            st.dataframe(topic_results)
 
-        """# Topic clustering
-        st.subheader("Topic Clustering")
-        topic_results = topic_clustering(text_data)
-        st.dataframe(topic_results)
-
-        # Sentiment analysis
-        st.subheader("Sentiment Analysis")
-        sentiment_counts = sentiment_analysis(text_data)
-        st.bar_chart(sentiment_counts)
-
-        st.write("Sentiment Counts:")
-        st.table(sentiment_counts)"""
+            # Sentiment analysis
+            st.subheader("Sentiment Analysis")
+            sentiment_counts = sentiment_analysis(text_data)
+            st.bar_chart(sentiment_counts)
+ 
+            st.write("Sentiment Counts:")
+            st.table(sentiment_counts)
 
 
