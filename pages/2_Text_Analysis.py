@@ -22,23 +22,23 @@ def ngram_analysis(text_series, n=2):
     return pd.DataFrame({'N-gram': ngrams_list, 'Count': ngrams_counts}).sort_values(by='Count', ascending=False)
 
 # Topic clustering (basic)
-def topic_clustering(text_series, num_topics=5):
-    vectorizer = CountVectorizer(stop_words='english')
-    X = vectorizer.fit_transform(text_series)
-    topics = X.sum(axis=0).A1
-    topics_df = pd.DataFrame({'Topic': vectorizer.get_feature_names_out(), 'Count': topics})
-    return topics_df.sort_values(by='Count', ascending=False).head(num_topics)
+#def topic_clustering(text_series, num_topics=5):
+    #vectorizer = CountVectorizer(stop_words='english')
+    #X = vectorizer.fit_transform(text_series)
+    #topics = X.sum(axis=0).A1
+    #topics_df = pd.DataFrame({'Topic': vectorizer.get_feature_names_out(), 'Count': topics})
+    #return topics_df.sort_values(by='Count', ascending=False).head(num_topics)
 
 # Sentiment analysis
-def sentiment_analysis(text_series):
-    sia = SentimentIntensityAnalyzer()
-    sentiments = text_series.apply(lambda x: sia.polarity_scores(x))
-    sentiments_df = pd.DataFrame(sentiments.tolist())
-    sentiment_counts = sentiments_df['compound'].apply(lambda x: 'Positive' if x > 0.05 else ('Negative' if x < -0.05 else 'Neutral'))
-    return sentiment_counts.value_counts()
+#def sentiment_analysis(text_series):
+    #sia = SentimentIntensityAnalyzer()
+    #sentiments = text_series.apply(lambda x: sia.polarity_scores(x))
+    #sentiments_df = pd.DataFrame(sentiments.tolist())
+    #sentiment_counts = sentiments_df['compound'].apply(lambda x: 'Positive' if x > 0.05 else ('Negative' if x < -0.05 else 'Neutral'))
+    #return sentiment_counts.value_counts()
 
 # Streamlit app layout
-st.title("Text Analysis App")
+st.title("Text Analysis")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
