@@ -58,7 +58,7 @@ if uploaded_file:
 
         # N-gram analysis
         st.subheader("N-gram Analysis")
-        n = st.slider("Select N for N-grams:", 1, 3, 2)
+        n = st.slider("Select N for N-grams:", 1, 5, 2)
         ngram_results = ngram_analysis(text_data, n)
         st.dataframe(ngram_results)
 
