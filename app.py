@@ -18,6 +18,8 @@ st.write("Hey! 👋 This site is to help you make sense of our (often overwhelmi
 st.write("📊 You'll need a CSV file to use this site!") 
 st.write("🧑‍💻 Once you've converted your files, navigate through the sidebar to upload it and create charts and tables! Have fun 🎉")
 
+st.markdown('<a href="https://scribehow.com/shared/How_to_convert_a_Google_Sheet_to_a_CSV__z_ytbPzaRqysSF_FwqGt8g" target="_blank">Learn to convert a Google Sheet to a CSV, use this!</a>', unsafe_allow_html=True)
+
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
 st.markdown("""
