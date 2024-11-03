@@ -5,9 +5,9 @@ import seaborn as sns
 import streamlit as st
 
 st.title("Don't be a stranger, get in touch!")
-st.write("If you have better name ideas, questions or feature suggestions, mail me at ")
-st.markdown("<a href='mailto:csm.sharada@gmail.com'>csm.sharada@gmail.com</a>", unsafe_allow_html=True)
-st.write(" with the subject 'ACM Reports Site'")
+
+st.markdown("If you have better name ideas, questions or feature suggestions, mail me at <a href='mailto:csm.sharada@gmail.com'>csm.sharada@gmail.com</a> with the subject as 'ACM Reports Site'", unsafe_allow_html=True)
+
 
 st.markdown("""
 <style>
