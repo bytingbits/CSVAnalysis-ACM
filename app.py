@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-st.set_page_config(page_title="My App Title", page_icon="🌟")
+st.set_page_config(page_title="ACM-CEG Report Helper", page_icon="🌟")
 
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 # Create columns for the header
@@ -13,7 +13,7 @@ with col1:
     st.image(light_mode_logo, use_column_width=True)  # Display header image
 # Set the title of the app
 with col2:
-    st.title("Welcome to ACM-CEG's Report Analyser!")
+    st.title("Welcome to ACM-CEG's Report Helper!")
 st.write("Hey! 👋 This site is to help you make sense of our (often overwhelmingly large) Google Forms for reports and otherwise!") 
 st.write("📊 You'll need a CSV file to use this site!") 
 st.write("🧑‍💻 Once you've converted your files, navigate through the sidebar to upload it and create charts and tables! Have fun 🎉")
