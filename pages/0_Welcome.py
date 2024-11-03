@@ -16,7 +16,7 @@ with col2:
     st.title("Welcome to ACM-CEG's Report Analyser!")
 st.write("Hey! 👋 This site is to help you make sense of our (often overwhelmingly large) Google Forms for reports and otherwise!") 
 st.write("📊 You'll need a CSV file to use this site!") 
-st.write("🧑‍💻 Once you've done that, navigate through the sidebar to create charts and tables with it! Have fun 🎉")
+st.write("🧑‍💻 Once you've converted your files, navigate through the sidebar to upload it and create charts and tables! Have fun 🎉")
 
 light_mode_logo = "white_mode.jpeg"  # Replace with your light mode logo path
 st.logo(light_mode_logo)
