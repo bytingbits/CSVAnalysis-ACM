@@ -36,11 +36,11 @@ if uploaded_file:
         # Display pie chart
         st.subheader("Pie Chart of Item Percentages")
         fig = percentage_counts.plot.pie(
-    	y='Percentage',
-    	labels=percentage_counts[selected_column],
-    	autopct='%1.1f%%',
-    	startangle=90,
-    	ylabel='',  # Remove y-label
-    	legend=None  # Do not show the legend
-	).figure
-	st.pyplot(fig)
+        y='Percentage',
+        labels=percentage_counts[selected_column],
+        autopct='%1.1f%%',
+        startangle=90,
+        ylabel='',  # Remove y-label
+        legend=None  # Do not show the legend
+        ).figure
+        st.pyplot(fig)
