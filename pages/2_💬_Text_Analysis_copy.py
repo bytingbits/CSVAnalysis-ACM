@@ -1,26 +1,3 @@
-import streamlit as st
-import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-from nltk import ngrams
-from nltk.sentiment import SentimentIntensityAnalyzer
-from collections import Counter
-import nltk
-
-# Download necessary NLTK resources
-nltk.download('vader_lexicon')
-
-# Function to load CSV
-def load_data(file):
-    return pd.read_csv(file)
-
-# N-gram analysis
-def ngram_analysis(text_series, n=2):
-    vectorizer = CountVectorizer(ngram_range=(n, n), stop_words='english')
-    X = vectorizer.fit_transform(text_series)
-    ngrams_counts = X.sum(axis=0).A1
-    ngrams_list = vectorizer.get_feature_names_out()
-    return pd.DataFrame({'N-gram': ngrams_list, 'Count': ngrams_counts}).sort_values(by='Count', ascending=False)
-
 # Sentiment analysis
 def sentiment_analysis(text_series):
     sia = SentimentIntensityAnalyzer()
@@ -46,7 +23,7 @@ if uploaded_file:
 
     if selected_column:
         st.write(f"Selected Column: {selected_column}")
-        text_data = data[selected_column].dropna()
+        text_data = data[selected_column].dropna()  # Drop null values
 
         # N-gram analysis
         st.subheader("N-gram Analysis")
