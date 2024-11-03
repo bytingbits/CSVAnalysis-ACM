@@ -35,10 +35,13 @@ st.markdown("""
     border-top: 1px solid #ccc;
     z-index: 1000;
 }
+.css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
 </style>
-#GithubIcon {
-  visibility: hidden;
-}
+
 <div class="footer">
     Made with ❤️ by <a href="https://github.com/bytingbits" target="_blank">sharada</a>
 </div>
