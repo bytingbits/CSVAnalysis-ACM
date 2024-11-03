@@ -23,7 +23,7 @@ def plot_stacked_bar(df, column_a, column_b):
     st.pyplot(plt.gcf())  # Display plot in Streamlit
 
 # Streamlit app layout
-st.title("Stacked Bar Plot from CSV")
+st.title("Stacked Bar Plot")
 
 # Step 1: Upload CSV
 uploaded_file = st.file_uploader("Upload CSV", type="csv")
